@@ -3,10 +3,16 @@ import math
 
 
 def normalize_angle(angle):
-    if angle >= 0:
+    if 0 <= angle < 400:
         return angle
+    elif angle >= 400:
+        while angle >= 400:
+            angle = angle - 400
     else:
-        return 400 + angle
+        while angle < 0:
+            angle = angle + 400
+
+    return angle
 
 
 def radians_to_grads(angle_in_radians):
