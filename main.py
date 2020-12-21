@@ -7,21 +7,20 @@ def main():
     with open('teksty.txt', 'r') as file:
         data = file.readlines()
 
-    points = {}
+    points = []
 
-    for i in data:
-        i = i.strip().split()
-        nr, x, y = i
-
+    for line in data:
+        nr, x, y = line.strip().split()
         point = Point(nr, x, y)
-        points[nr] = point
+        points.append(point)
 
-    print(points['P1'].get_length(points['P2']))
-    print(points['P2'].get_length(points['P3']))
-    print(points['P3'].get_length(points['P4']))
+    sum_all_azimuth = 0
+    for i in range(len(points)-2):
+        i = i+1
+        # sum_all_azimuth += points[i].get_azimuth(points[i + 1])
+        sum_all_azimuth += points[i].get_angle(points[i + -1], points[i+1])
 
-    # floatA = 1.125
-    # print(round(floatA, 2))
+    print(sum_all_azimuth)
 
 
 if __name__ == '__main__':
