@@ -8,19 +8,18 @@ def main():
         data = file.readlines()
 
     points = []
-
     for line in data:
-        nr, x, y = line.strip().split()
-        point = Point(nr, x, y)
-        points.append(point)
+        point = line.strip().split()
+        points.append(Point(point[0], point[1], point[2]))
 
-    sum_all_azimuth = 0
-    for i in range(len(points)-2):
-        i = i+1
-        # sum_all_azimuth += points[i].get_azimuth(points[i + 1])
-        sum_all_azimuth += points[i].get_angle(points[i + -1], points[i+1])
+    length = 0
+    azimuth = 0
+    for i in range(len(points)-1):
+        azimuth += points[i].get_azimuth(points[i+1])
+        length += points[i].get_length(points[i+1])
 
-    print(sum_all_azimuth)
+    print(f'length = {length}')
+    print(f'azimuth = {azimuth}')
 
 
 if __name__ == '__main__':
