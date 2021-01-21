@@ -83,3 +83,7 @@ def test_decimal_deg2dms_deg():
     assert decimal_deg2dms_deg(1.0169722222222222)[:2] == (1, 1)
     assert pytest.approx(decimal_deg2dms_deg(1.0169722222222222)[2]) == 1.1
 
+
+def test_dms_deg2decimal_deg():
+    # correct for 5
+    pass
